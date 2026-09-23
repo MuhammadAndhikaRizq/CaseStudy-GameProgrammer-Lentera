@@ -19,12 +19,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void UpdateMovementAnimation()
     {
-        animator.SetFloat(
-            Speed,
-            movement.CurrentSpeed,
-            0.1f,
-            Time.deltaTime
-        );
+        animator.SetFloat(Speed, movement.NormalizedSpeed, 0.1f, Time.deltaTime);
     }
 
     // private void UpdateStateAnimation()
