@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (playerController.CurrentState == PlayerState.Interacting)
+        if (TryGetComponent(out PlayerController controller))
         {
-            CurrentSpeed = 0f; 
-            return; 
+            if (controller.CurrentState == PlayerState.Interacting)
+            {
+                CurrentSpeed = 0f;
+                return; 
+            }
         }
 
         HandleMovement();

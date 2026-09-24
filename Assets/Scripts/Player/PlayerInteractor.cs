@@ -3,35 +3,43 @@ using UnityEngine;
 public class PlayerInteractor : MonoBehaviour
 {
     private IInteractable currentInteractable;
-    private PlayerInputReader inputReader;
+    [SerializeField] private PlayerInputReader inputReader;
+    private bool isInsideZone = false;
 
     private void Awake()
     {
-        inputReader = GetComponent<PlayerInputReader>();
+        if (inputReader == null)
+        {
+            inputReader = GetComponentInParent<PlayerInputReader>();
+        }
     }
 
     private void OnEnable()
     {
-        inputReader.OnInteractPerformed += TryInteract;
+        if (inputReader != null)
+        {
+            inputReader.OnInteractPerformed += HandleInteract;
+        }
+        else
+        {
+            Debug.LogError(">>> PlayerInteractor: inputReader is NULL! Check Inspector assignment.");
+        }
     }
 
     private void OnDisable()
     {
-        inputReader.OnInteractPerformed -= TryInteract;
-    }
-
-    private void TryInteract()
-    {
-        if (currentInteractable != null)
+        if (inputReader != null)
         {
-            currentInteractable.Interact(gameObject);
+            inputReader.OnInteractPerformed -= HandleInteract;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger Entered with: " + other.gameObject.name);
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            isInsideZone = true;
             if (currentInteractable != null)
                 currentInteractable.ShowHighlight(false);
 
@@ -44,11 +52,24 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            isInsideZone = false;
             if (currentInteractable == interactable)
             {
                 currentInteractable.ShowHighlight(false);
                 currentInteractable = null;
             }
+        }
+    }
+
+    private void HandleInteract()
+    {
+        if (!isInsideZone) return;
+
+        Debug.Log(">>> Membuka Puzzle!");
+    
+        if (currentInteractable != null)
+        {
+            currentInteractable.Interact(this.gameObject);
         }
     }
 }

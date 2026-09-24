@@ -6,39 +6,28 @@ public class PlayerInputReader : MonoBehaviour
 {
     public Vector2 Move { get; private set; }
     public Vector2 Look { get; private set; }
+    public event Action OnInteractPerformed; 
 
-    // public event Action OnJumpPerformed;
-    public event Action OnInteractPerformed;
-    // public event Action<bool> OnSprintChanged; 
+    private PlayerControls inputActions;
 
-    public void OnMove(InputValue value)
+    private void Awake()
     {
-        Move = value.Get<Vector2>();
-    }
+        inputActions = new PlayerControls();
 
-    public void OnLook(InputValue value)
-    {
-        Look = value.Get<Vector2>();
-    }
+        inputActions.Player.Move.performed += ctx => Move = ctx.ReadValue<Vector2>();
+        inputActions.Player.Move.canceled += ctx => Move = Vector2.zero;
 
-    // public void OnJump(InputValue value)
-    // {
-    //     if (value.isPressed)
-    //     {
-    //         OnJumpPerformed?.Invoke();
-    //     }
-    // }
+        inputActions.Player.Look.performed += ctx => Look = ctx.ReadValue<Vector2>();
+        inputActions.Player.Look.canceled += ctx => Look = Vector2.zero;
 
-    public void OnInteract(InputValue value)
-    {
-        if (value.isPressed)
+        inputActions.Player.Interact.performed += ctx => 
         {
+            Debug.Log(">>> RAW INPUT SYSTEM: Tombol Interact ditekan!");
             OnInteractPerformed?.Invoke();
-        }
+        };
     }
 
-    // public void OnSprint(InputValue value)
-    // {
-    //     OnSprintChanged?.Invoke(value.isPressed);
-    // }
+    private void OnEnable() => inputActions.Enable();
+    private void OnDisable() => inputActions.Disable();
+
 }

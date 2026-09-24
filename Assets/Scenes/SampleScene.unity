@@ -1601,13 +1601,13 @@ GameObject:
   - component: {fileID: 543450652664981610}
   - component: {fileID: 5866666020981256720}
   - component: {fileID: 1068601219}
+  - component: {fileID: 5866666020981256724}
+  - component: {fileID: 5866666020981256725}
   - component: {fileID: 1068601224}
   - component: {fileID: 1068601223}
   - component: {fileID: 1068601222}
   - component: {fileID: 5866666020981256723}
-  - component: {fileID: 5866666020981256725}
-  - component: {fileID: 5866666020981256721}
-  - component: {fileID: 5866666020981256724}
+  - component: {fileID: 5866666020981256727}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -2592,36 +2592,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5866666020981256721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149015950032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &5866666020981256723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,6 +2642,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aacfd1cc76a1424469d3b00515ebb407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputReader: {fileID: 1068601223}
+--- !u!114 &5866666020981256727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149015950032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b30a5b1911781479d4328d18458439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5881436201210854871
