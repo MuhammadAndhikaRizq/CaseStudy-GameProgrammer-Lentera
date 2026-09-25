@@ -7,7 +7,7 @@ public class InputCheck : MonoBehaviour
     {
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            Debug.Log(">>> RAW E KEY DETECTED BY UNITY <<<");
+            Debug.Log("Test Input tombol E keyboard");
         }
     }
 }

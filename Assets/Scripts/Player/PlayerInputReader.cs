@@ -22,7 +22,7 @@ public class PlayerInputReader : MonoBehaviour
 
         inputActions.Player.Interact.performed += ctx => 
         {
-            Debug.Log(">>> RAW INPUT SYSTEM: Tombol Interact ditekan!");
+
             OnInteractPerformed?.Invoke();
         };
     }

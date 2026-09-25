@@ -20,10 +20,6 @@ public class PlayerInteractor : MonoBehaviour
         {
             inputReader.OnInteractPerformed += HandleInteract;
         }
-        else
-        {
-            Debug.LogError(">>> PlayerInteractor: inputReader is NULL! Check Inspector assignment.");
-        }
     }
 
     private void OnDisable()
@@ -64,8 +60,6 @@ public class PlayerInteractor : MonoBehaviour
     private void HandleInteract()
     {
         if (!isInsideZone) return;
-
-        Debug.Log(">>> Membuka Puzzle!");
     
         if (currentInteractable != null)
         {

@@ -61,8 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.sqrMagnitude > 0.01f)
         {
-            Quaternion targetRotation =
-                Quaternion.LookRotation(movement);
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
 
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
